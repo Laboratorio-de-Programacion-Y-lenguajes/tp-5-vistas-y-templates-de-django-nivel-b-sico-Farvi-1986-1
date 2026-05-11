@@ -53,6 +53,6 @@ class PublicacionListView(ListView):
 
 class PublicacionDetailView(DetailView):
     model = Publicacion
-    template_name = "publicaciones/detalle_publicacion.html"
+    template_name = "publicaciones/publicacion_detail.html"
     context_object_name = "publicacion"
     pk_url_kwarg = "publicacion_id"
