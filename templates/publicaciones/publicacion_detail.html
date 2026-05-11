@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <h1>{{ publicacion.titulo }}</h1>
-    <p><strong>Autor:</strong> {{ publicacion.autor }} | <strong>Fecha:</strong> {{ publicacion.fecha_publicacion }}</p>
-    
-    <hr>
-    <div class="contenido">
-        {{ publicacion.contenido|linebreaks }}
-    </div>
-    <hr>
+{% block title %}{{ publicacion.titulo }}{% endblock %}
 
-    <a href="{% url 'publicaciones:lista_publicaciones' %}">← Volver al listado</a>
+{% block content %}
+    <article>
+        <h1 style="font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px;">{{ publicacion.titulo }}</h1>
+        <p style="font-style: italic; color: #7f8c8d;">
+            Publicado por {{ publicacion.autor }} el {{ publicacion.fecha_publicacion }}
+        </p>
+        <hr>
+        <div style="font-size: 1.2rem; text-align: justify;">
+            {{ publicacion.contenido|linebreaks }}
+        </div>
+        <hr style="margin-top: 30px;">
+        <div style="margin-top: 20px;">
+            <a href="{% url 'publicaciones:lista_publicaciones' %}" style="color: #3498db; text-decoration: none; font-weight: bold;">
+                ← Volver a la lista de noticias
+            </a>
+        </div>
+    </article>
 {% endblock %}

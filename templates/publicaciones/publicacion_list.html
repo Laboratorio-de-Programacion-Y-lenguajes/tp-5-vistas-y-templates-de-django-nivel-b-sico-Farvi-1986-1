@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Listado de Publicaciones</h2>
-    <ul>
-        {% for publicacion in publicacion_list %}
-            <li>
-                <strong>{{ publicacion.titulo }}</strong> - {{ publicacion.autor }}
-                <br>
-                <a href="{% url 'publicaciones:detalle_publicacion' publicacion.id %}">Ver detalle</a>
-            </li>
-            <br>
-        {% empty %}
-            <li>No hay publicaciones aún.</li>
-        {% endfor %}
-    </ul>
+    <h2>Últimas Publicaciones</h2>
+    <hr>
+    {% for pub in publicacion_list %}
+        <div style="border-bottom: 1px solid #eee; padding: 15px 0;">
+            <h3 style="margin: 0;">{{ pub.titulo }}</h3>
+            <p style="color: #666; font-size: 0.9rem;">Por: <strong>{{ pub.autor }}</strong> | {{ pub.fecha_publicacion }}</p>
+            <a href="{% url 'publicaciones:detalle_publicacion' pub.id %}" class="btn">Ver detalle completo</a>
+        </div>
+    {% empty %}
+        <p>No hay noticias cargadas por ahora.</p>
+    {% endfor %}
 {% endblock %}
