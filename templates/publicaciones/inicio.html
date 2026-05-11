@@ -17,3 +17,10 @@
             ...
         {% endblock %}
 -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ titulo }}</h1>
+    <p>{{ mensaje }}</p>
+    <a href="{% url 'publicaciones:lista_publicaciones' %}">Ver publicaciones</a>
+{% endblock %}
